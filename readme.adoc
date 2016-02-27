@@ -1,0 +1,34 @@
+= OptaPlanner DevConf Workshop 2015
+
+== TASK 1
+. Open project in Java IDE you‘ve selected (just click on parent pom.xml).
+. Open module called `cloudbalance-easymodel`.
+. Search for `src/main/java/org/optaplanner/examples/cloudbalancing/domain` package and get familiar with Java classes.
+  - Which are planning entities and what are their variables?
+  - Where they get values for variables?
+
+== TASK 2
+. Open `src/main/resources/org/optaplanner/examples/cloudbalancing/solver/cloudBalancingSolverConfig.xml`.
+. Execute `run_easy.sh` (or `run_easy.bat`), pick "15 computers with 45 processes" scenario and see what Planner does.
+  - graphic output (very fast, you may miss it)
+  - see log in terminal
+. Try to uncomment "localsearch" section in `cloudBalancingSolverConfig.xml` and repeat step 1.
+. Observe the score difference.
+  - why is score better?
+  - is there possibility that score after localsearch phase is not better? and why?
+
+== TASK 3
+. Open module called `cloudbalance-sophisticated`.
+. Search for `src/main/java/org/optaplanner/examples/cloudbalancing/domain` package and get familiar with Java classes.
+  - there are extra annotations
+  - there are extra files (comparators) - why do we need them? see in code
+  - run construction heuristic only and compare time and score differences with TASK2
+    - config file: `src/main/resources/org/optaplanner/examples/cloudbalancing/solver/cloudBalancingSolverConfig.xml`
+. Search for `src/main/java/org/optaplanner/examples/cloudbalancing/solver/score`.
+  - check EasyScore score function and IncrementalScoreFunction
+    - why do we need incremental score function?
+    - in `cloudBalancingSolverConfig.xml` try speed difference between easy and incremental score calculation
+
+== TASK 4 (optional)
+. Pick one score calculation and add a new hard constraint: no computer should have more than 4 processes assigned to it.
+  - note: incremental and map based scoreFunctions are harder for implementation 
